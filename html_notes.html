@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<!-- 
+DOCTYPE tells the browser this is an HTML5 document.
+Always put this at the very top.
+-->
+
+<html lang="en">
+<!-- 
+<html> is the root element.
+lang="en" helps accessibility and SEO.
+-->
+
+<head>
+    <!-- Metadata about the webpage -->
+
+    <meta charset="UTF-8">
+    <!-- Supports all characters including emojis -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Makes the page responsive on mobile devices -->
+
+    <meta name="description" content="Full Stack HTML Cheat Sheet">
+    <!-- Description used by search engines -->
+
+    <meta name="keywords" content="HTML, Full Stack, Web Development">
+    <!-- Keywords for SEO -->
+
+    <meta name="author" content="Your Name">
+
+    <title>HTML Full Stack Notes</title>
+    <!-- Title shown on browser tab -->
+
+    <style>
+        /* Basic internal CSS example */
+
+        body {
+            font-family: Arial;
+            margin: 20px;
+        }
+
+        .box {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- ================================================= -->
+<!-- HEADINGS -->
+<!-- ================================================= -->
+
+<div class="box">
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>
+
+<!-- Headings define hierarchy of the page -->
+</div>
+
+
+<!-- ================================================= -->
+<!-- PARAGRAPH AND TEXT FORMATTING -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<p>This is a paragraph.</p>
+
+<b>Bold text</b><br>
+<strong>Important bold text</strong><br>
+
+<i>Italic text</i><br>
+<em>Emphasized text</em><br>
+
+<u>Underlined text</u><br>
+
+<mark>Highlighted text</mark><br>
+
+<small>Small text</small><br>
+
+<del>Deleted text</del><br>
+
+<ins>Inserted text</ins><br>
+
+<sub>Subscript example H₂O</sub><br>
+
+<sup>Superscript example x²</sup>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- LINKS -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<a href="https://google.com">Visit Google</a>
+<!-- Opens link in same tab -->
+
+<br>
+
+<a href="https://google.com" target="_blank">
+Open Google in new tab
+</a>
+
+<br>
+
+<a href="mailto:test@gmail.com">Send Email</a>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- IMAGES -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<img src="https://via.placeholder.com/200"
+     alt="Example Image"
+     width="200"
+     height="200">
+
+<!--
+src = image source
+alt = alternative text
+width/height = image size
+-->
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- LISTS -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<h3>Unordered List</h3>
+
+<ul>
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Mango</li>
+</ul>
+
+<h3>Ordered List</h3>
+
+<ol>
+    <li>Step 1</li>
+    <li>Step 2</li>
+    <li>Step 3</li>
+</ol>
+
+<h3>Description List</h3>
+
+<dl>
+    <dt>HTML</dt>
+    <dd>Hyper Text Markup Language</dd>
+
+    <dt>CSS</dt>
+    <dd>Style sheet language</dd>
+</dl>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- TABLES -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<table border="1">
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Age</th>
+<th>City</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>John</td>
+<td>22</td>
+<td>Delhi</td>
+</tr>
+
+<tr>
+<td>Mary</td>
+<td>25</td>
+<td>Mumbai</td>
+</tr>
+</tbody>
+
+</table>
+
+<!--
+table = table container
+tr = table row
+th = table header
+td = table data
+-->
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- DIV AND SPAN -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<div>This is a block level element</div>
+
+<span>This is an inline element</span>
+
+<!--
+div = block container
+span = inline container
+-->
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- SEMANTIC HTML -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<header>
+Header section
+</header>
+
+<nav>
+Navigation bar
+</nav>
+
+<main>
+Main content
+</main>
+
+<section>
+Section of content
+</section>
+
+<article>
+Independent content
+</article>
+
+<aside>
+Sidebar content
+</aside>
+
+<footer>
+Footer content
+</footer>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- FORMS -->
+<!-- VERY IMPORTANT FOR EXAMS -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<form action="/submit" method="POST">
+
+<label>Name:</label>
+<input type="text" name="name">
+
+<br><br>
+
+<label>Email:</label>
+<input type="email" name="email">
+
+<br><br>
+
+<label>Password:</label>
+<input type="password" name="password">
+
+<br><br>
+
+<label>Age:</label>
+<input type="number" name="age">
+
+<br><br>
+
+<label>Date:</label>
+<input type="date">
+
+<br><br>
+
+<label>Gender:</label>
+
+<input type="radio" name="gender" value="male"> Male
+<input type="radio" name="gender" value="female"> Female
+
+<br><br>
+
+<label>Skills:</label>
+
+<input type="checkbox" name="html"> HTML
+<input type="checkbox" name="css"> CSS
+<input type="checkbox" name="js"> JavaScript
+
+<br><br>
+
+<label>Country</label>
+
+<select>
+<option>India</option>
+<option>USA</option>
+<option>UK</option>
+</select>
+
+<br><br>
+
+<textarea rows="4" cols="30">
+Write message here
+</textarea>
+
+<br><br>
+
+<input type="submit" value="Submit">
+
+<input type="reset">
+
+</form>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- INPUT TYPES -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<input type="text"><br>
+<input type="password"><br>
+<input type="email"><br>
+<input type="number"><br>
+<input type="date"><br>
+<input type="color"><br>
+<input type="file"><br>
+<input type="range"><br>
+<input type="tel"><br>
+<input type="url"><br>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- MULTIMEDIA -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<h3>Audio</h3>
+
+<audio controls>
+<source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+<h3>Video</h3>
+
+<video width="320" height="240" controls>
+<source src="video.mp4" type="video/mp4">
+</video>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- IFRAME -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<iframe src="https://example.com"
+width="400"
+height="200">
+</iframe>
+
+<!-- Embeds another website -->
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- HTML ENTITIES -->
+<!-- ================================================= -->
+
+<div class="box">
+
+&lt; = less than <br>
+&gt; = greater than <br>
+&amp; = ampersand <br>
+&nbsp; = non breaking space <br>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- DATA ATTRIBUTES -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<button data-user="123">
+Custom Data Attribute
+</button>
+
+<!-- Used in JavaScript -->
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- PROGRESS BAR -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<progress value="70" max="100"></progress>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- DETAILS TAG -->
+<!-- ================================================= -->
+
+<div class="box">
+
+<details>
+<summary>Click to expand</summary>
+Hidden content inside details tag
+</details>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- SCRIPT -->
+<!-- ================================================= -->
+
+<script>
+
+// Simple JavaScript example
+
+console.log("HTML notes loaded");
+
+</script>
+
+
+</body>
+</html>

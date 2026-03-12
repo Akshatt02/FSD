@@ -1,0 +1,779 @@
+/* =========================================================
+   1. CSS BASICS
+========================================================= */
+
+/*
+CSS Syntax
+
+selector {
+    property: value;
+}
+*/
+
+h1 {
+    color: blue;
+}
+
+/*
+Selector = element to style
+Property = attribute to change
+Value = assigned value
+*/
+
+
+/* =========================================================
+   2. CSS SELECTORS
+========================================================= */
+
+/* Element Selector */
+p {
+    color: red;
+}
+
+/* Class Selector */
+.box {
+    background-color: lightgray;
+}
+
+/* ID Selector (should be unique) */
+#header {
+    background-color: black;
+    color: white;
+}
+
+/* Universal Selector (applies to everything) */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Group Selector */
+h1, h2, h3 {
+    font-family: Arial;
+}
+
+/* Descendant Selector (p inside div) */
+div p {
+    color: green;
+}
+
+/* Direct Child Selector */
+div > p {
+    color: purple;
+}
+
+/* Adjacent Sibling */
+h1 + p {
+    color: orange;
+}
+
+/* General Sibling */
+h1 ~ p {
+    font-style: italic;
+}
+
+/* Attribute Selector */
+input[type="text"] {
+    border: 2px solid blue;
+}
+
+/* Attribute contains value */
+a[href*="google"] {
+    color: red;
+}
+
+/* Attribute starts with */
+a[href^="https"] {
+    color: green;
+}
+
+
+/* =========================================================
+   3. COLORS
+========================================================= */
+
+/*
+Ways to define colors
+*/
+
+.color1 { color: red; }
+
+.color2 { color: #ff0000; }
+
+.color3 { color: rgb(255,0,0); }
+
+.color4 { color: rgba(255,0,0,0.5); }
+
+.color5 { color: hsl(0, 100%, 50%); }
+
+
+/* =========================================================
+   4. BACKGROUND
+========================================================= */
+
+.background {
+
+    background-color: lightblue;
+
+    background-image: url("image.jpg");
+
+    background-repeat: no-repeat;
+
+    background-position: center;
+
+    background-size: cover;
+
+    background-attachment: fixed;
+
+}
+
+
+/* =========================================================
+   5. TEXT STYLING
+========================================================= */
+
+.text-style {
+
+    color: black;
+
+    text-align: center;
+
+    text-decoration: underline;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    line-height: 1.6;
+
+    word-spacing: 5px;
+
+}
+
+
+/* =========================================================
+   6. FONTS
+========================================================= */
+
+.font-example {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    font-style: italic;
+
+}
+
+/*
+font-weight values
+normal
+bold
+100–900
+*/
+
+
+/* =========================================================
+   7. BOX MODEL
+========================================================= */
+
+/*
+Box Model Structure
+
+margin
+border
+padding
+content
+*/
+
+.box {
+
+    width: 200px;
+
+    height: 100px;
+
+    padding: 20px;
+
+    border: 5px solid black;
+
+    margin: 30px;
+
+}
+
+/*
+Box sizing property
+*/
+
+.box-sizing-example {
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   8. BORDERS
+========================================================= */
+
+.border-example {
+
+    border-width: 2px;
+
+    border-style: solid;
+
+    border-color: black;
+
+    border-radius: 10px;
+
+}
+
+
+/* =========================================================
+   9. WIDTH AND HEIGHT
+========================================================= */
+
+.size {
+
+    width: 200px;
+
+    height: 100px;
+
+    max-width: 500px;
+
+    min-width: 100px;
+
+}
+
+
+/* =========================================================
+   10. DISPLAY PROPERTY
+========================================================= */
+
+/*
+display types
+*/
+
+.block { display: block; }
+
+.inline { display: inline; }
+
+.inline-block { display: inline-block; }
+
+.none { display: none; }
+
+
+/* =========================================================
+   11. POSITIONING
+========================================================= */
+
+/*
+position types
+static
+relative
+absolute
+fixed
+sticky
+*/
+
+.relative {
+
+    position: relative;
+
+    top: 10px;
+
+    left: 20px;
+
+}
+
+.absolute {
+
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+}
+
+.fixed {
+
+    position: fixed;
+
+    bottom: 10px;
+
+    right: 10px;
+
+}
+
+.sticky {
+
+    position: sticky;
+
+    top: 0;
+
+}
+
+
+/* =========================================================
+   12. Z INDEX
+========================================================= */
+
+.layer {
+
+    position: absolute;
+
+    z-index: 10;
+
+}
+
+
+/* =========================================================
+   13. FLOAT
+========================================================= */
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clearfix {
+    clear: both;
+}
+
+
+/* =========================================================
+   14. FLEXBOX (VERY IMPORTANT)
+========================================================= */
+
+/*
+Flexbox used for 1D layout
+*/
+
+.flex-container {
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+/*
+flex-direction
+
+row
+column
+row-reverse
+column-reverse
+*/
+
+.flex-item {
+
+    background: lightgray;
+
+    padding: 20px;
+
+}
+
+/*
+justify-content
+
+center
+flex-start
+flex-end
+space-between
+space-around
+space-evenly
+*/
+
+/*
+align-items
+
+center
+flex-start
+flex-end
+stretch
+*/
+
+
+/* =========================================================
+   15. FLEX ITEM PROPERTIES
+========================================================= */
+
+.flex-item {
+
+    flex-grow: 1;
+
+    flex-shrink: 1;
+
+    flex-basis: 200px;
+
+    order: 1;
+
+    align-self: center;
+
+}
+
+
+/* =========================================================
+   16. GRID LAYOUT
+========================================================= */
+
+/*
+CSS Grid used for 2D layout
+*/
+
+.grid-container {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-rows: auto;
+
+    gap: 20px;
+
+}
+
+.grid-item {
+
+    background: lightgray;
+
+    padding: 20px;
+
+}
+
+
+/*
+Grid positioning
+*/
+
+.grid-item1 {
+
+    grid-column: 1 / 3;
+
+}
+
+.grid-item2 {
+
+    grid-row: 1 / 3;
+
+}
+
+
+/* =========================================================
+   17. OVERFLOW
+========================================================= */
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-scroll {
+    overflow: scroll;
+}
+
+.overflow-auto {
+    overflow: auto;
+}
+
+
+/* =========================================================
+   18. OPACITY
+========================================================= */
+
+.transparent {
+
+    opacity: 0.5;
+
+}
+
+
+/* =========================================================
+   19. LIST STYLING
+========================================================= */
+
+ul {
+
+    list-style-type: square;
+
+}
+
+ol {
+
+    list-style-type: upper-roman;
+
+}
+
+
+/* =========================================================
+   20. TABLE STYLING
+========================================================= */
+
+table {
+
+    border-collapse: collapse;
+
+    width: 100%;
+
+}
+
+th, td {
+
+    border: 1px solid black;
+
+    padding: 10px;
+
+}
+
+tr:hover {
+
+    background-color: lightgray;
+
+}
+
+
+/* =========================================================
+   21. FORM STYLING
+========================================================= */
+
+input, textarea, select {
+
+    padding: 10px;
+
+    border: 1px solid gray;
+
+    border-radius: 5px;
+
+}
+
+input:focus {
+
+    outline: none;
+
+    border-color: blue;
+
+}
+
+button {
+
+    padding: 10px 20px;
+
+    background: blue;
+
+    color: white;
+
+    border: none;
+
+    cursor: pointer;
+
+}
+
+button:hover {
+
+    background: darkblue;
+
+}
+
+
+/* =========================================================
+   22. PSEUDO CLASSES
+========================================================= */
+
+a:hover {
+
+    color: red;
+
+}
+
+button:active {
+
+    transform: scale(0.95);
+
+}
+
+li:first-child {
+
+    color: red;
+
+}
+
+li:last-child {
+
+    color: blue;
+
+}
+
+li:nth-child(2) {
+
+    color: green;
+
+}
+
+
+/* =========================================================
+   23. PSEUDO ELEMENTS
+========================================================= */
+
+p::first-letter {
+
+    font-size: 40px;
+
+}
+
+p::first-line {
+
+    font-weight: bold;
+
+}
+
+::selection {
+
+    background: yellow;
+
+}
+
+
+/* =========================================================
+   24. TRANSITIONS
+========================================================= */
+
+.transition-box {
+
+    background: blue;
+
+    transition: all 0.3s ease;
+
+}
+
+.transition-box:hover {
+
+    background: red;
+
+    transform: scale(1.1);
+
+}
+
+
+/* =========================================================
+   25. ANIMATIONS
+========================================================= */
+
+@keyframes slide {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(200px);
+    }
+
+}
+
+.animate {
+
+    animation: slide 2s infinite;
+
+}
+
+
+/* =========================================================
+   26. CSS VARIABLES
+========================================================= */
+
+:root {
+
+    --primary-color: blue;
+
+    --padding: 10px;
+
+}
+
+.variable-example {
+
+    color: var(--primary-color);
+
+    padding: var(--padding);
+
+}
+
+
+/* =========================================================
+   27. MEDIA QUERIES (RESPONSIVE DESIGN)
+========================================================= */
+
+/*
+Used to change styles for different screen sizes
+*/
+
+@media (max-width: 1024px) {
+
+    body {
+
+        background: lightgray;
+
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    body {
+
+        background: lightblue;
+
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    body {
+
+        background: pink;
+
+    }
+
+}
+
+
+/* =========================================================
+   28. COMMON UTILITY CLASSES
+========================================================= */
+
+.center {
+    text-align: center;
+}
+
+.flex-center {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.hidden {
+    display: none;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+.shadow {
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}

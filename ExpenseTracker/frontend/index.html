@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Expense Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Expense Tracker</h1>
+
+<h2>Signup</h2>
+<input id="suUser" placeholder="username">
+<input id="suPass" placeholder="password">
+<button onclick="signup()">Signup</button>
+
+
+<h2>Login</h2>
+<input id="logUser" placeholder="username">
+<input id="logPass" placeholder="password">
+<button onclick="login()">Login</button>
+
+<hr>
+
+<h2>Add Expense</h2>
+
+<input id="title" placeholder="title">
+<input id="amount" placeholder="amount">
+<input id="category" placeholder="category">
+
+<button onclick="addExpense()">Add</button>
+
+
+<h2>Filter Category</h2>
+
+<input id="filter" placeholder="category">
+<button onclick="filterCategory()">Filter</button>
+
+
+<h2>Expenses</h2>
+
+<ul id="list"></ul>
+
+
+<h3>Total: <span id="total">0</span></h3>
+
+<script src="script.js"></script>
+
+</body>
+</html>

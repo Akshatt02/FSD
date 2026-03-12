@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="nav">Student Dashboard</div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h3>Available Assignments</h3>
+
+            <div id="assignmentList"></div>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Submit Assignment</h3>
+
+            <input id="assignmentId" placeholder="Assignment ID">
+
+            <textarea id="answer" placeholder="Write your answer"></textarea>
+
+            <button onclick="submitAssignment()">Submit</button>
+
+        </div>
+
+        <div class="card">
+
+            <h3>My Submissions</h3>
+
+            <div id="submissionList"></div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        getAssignments();
+        getMySubmissions();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tasks</title>
+</head>
+
+<body>
+
+    <h1>Task Manager</h1>
+
+    <input id="taskInput" placeholder="Task title">
+    <button onclick="addTask()">Add Task</button>
+
+    <ul id="tasks"></ul>
+
+    <script>
+
+        const token = localStorage.getItem("token")
+
+        async function loadTasks() {
+
+            const res = await fetch("/tasks", {
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            })
+
+            const tasks = await res.json()
+
+            const list = document.getElementById("tasks")
+            list.innerHTML = ""
+
+            tasks.forEach(task => {
+
+                const li = document.createElement("li")
+
+                li.innerHTML = `
+${task.title}
+<button onclick="deleteTask('${task._id}')">Delete</button>
+<button onclick="toggleTask('${task._id}',${task.completed})">
+${task.completed ? "Undo" : "Done"}
+</button>
+`
+
+                list.appendChild(li)
+
+            })
+
+        }
+
+
+        async function addTask() {
+
+            const title = document.getElementById("taskInput").value
+
+            await fetch("/tasks", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + token
+                },
+                body: JSON.stringify({ title })
+            })
+
+            loadTasks()
+
+        }
+
+
+        async function deleteTask(id) {
+
+            await fetch("/tasks/" + id, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            })
+
+            loadTasks()
+
+        }
+
+
+        async function toggleTask(id, current) {
+
+            await fetch("/tasks/" + id, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + token
+                },
+                body: JSON.stringify({
+                    completed: !current
+                })
+            })
+
+            loadTasks()
+
+        }
+
+        loadTasks()
+
+    </script>
+
+</body>
+
+</html>

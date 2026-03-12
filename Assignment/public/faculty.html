@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="nav">Faculty Dashboard</div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h3>Create Assignment</h3>
+
+            <input id="title" placeholder="Assignment Title">
+
+            <input id="course" placeholder="Course">
+
+            <input id="due_date" placeholder="Due Date">
+
+            <textarea id="description" placeholder="Description"></textarea>
+
+            <button onclick="createAssignment()">Create Assignment</button>
+
+        </div>
+
+        <div class="card">
+
+            <h3>All Assignments</h3>
+
+            <div id="assignmentList"></div>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Student Submissions</h3>
+
+            <div id="submissionList"></div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        getAssignments();
+        getSubmissions();
+    </script>
+
+</body>
+
+</html>

@@ -7,18 +7,17 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
-app.use(express.static("public"))
 
 const PORT = 5000
 const SECRET = "secret123"
-
 
 /* ===============================
 DATABASE
 ================================ */
 
-mongoose.connect("mongodb://127.0.0.1:27017/task_manager")
+mongoose.connect("mongodb+srv://Akshat:@assg.5g5dtdl.mongodb.net/akshat?retryWrites=true&w=majority")
 .then(()=>console.log("Mongo connected"))
+.catch(err=>console.log(err))
 
 
 /* ===============================
@@ -26,7 +25,7 @@ MODELS
 ================================ */
 
 const userSchema = new mongoose.Schema({
-    username:String,
+    username:{type:String,unique:true},
     password:String
 })
 
@@ -43,28 +42,34 @@ const User = mongoose.model("User",userSchema)
 const Task = mongoose.model("Task",taskSchema)
 
 
-
 /* ===============================
 AUTH MIDDLEWARE
 ================================ */
 
 function auth(req,res,next){
 
-    const header = req.headers.authorization
+    try{
 
-    if(!header)
-        return res.status(401).json({message:"No token"})
+        const header = req.headers.authorization
 
-    const token = header.split(" ")[1]
+        if(!header)
+            return res.status(401).json({message:"No token provided"})
 
-    const decoded = jwt.verify(token,SECRET)
+        const token = header.split(" ")[1]
 
-    req.user = decoded
+        const decoded = jwt.verify(token,SECRET)
 
-    next()
+        req.user = decoded
+
+        next()
+
+    }catch(err){
+
+        res.status(401).json({message:"Invalid token"})
+
+    }
 
 }
-
 
 
 /* ===============================
@@ -73,12 +78,26 @@ REGISTER
 
 app.post("/register", async(req,res)=>{
 
-    const user = await User.create(req.body)
+    try{
 
-    res.json(user)
+        const {username,password} = req.body
+
+        const existing = await User.findOne({username})
+
+        if(existing)
+            return res.status(400).json({message:"User already exists"})
+
+        const user = await User.create({username,password})
+
+        res.json({message:"User created",user})
+
+    }catch(err){
+
+        res.status(500).json({message:"Server error"})
+
+    }
 
 })
-
 
 
 /* ===============================
@@ -87,21 +106,30 @@ LOGIN
 
 app.post("/login", async(req,res)=>{
 
-    const {username,password} = req.body
+    try{
 
-    const user = await User.findOne({username,password})
+        const {username,password} = req.body
 
-    if(!user)
-        return res.status(401).json({message:"Invalid login"})
+        const user = await User.findOne({username,password})
 
-    const token = jwt.sign({
-        id:user._id
-    },SECRET)
+        if(!user)
+            return res.status(401).json({message:"Invalid login"})
 
-    res.json({token})
+        const token = jwt.sign(
+            {id:user._id},
+            SECRET,
+            {expiresIn:"1d"}
+        )
+
+        res.json({token})
+
+    }catch(err){
+
+        res.status(500).json({message:"Server error"})
+
+    }
 
 })
-
 
 
 /* ===============================
@@ -110,17 +138,24 @@ CREATE TASK
 
 app.post("/tasks", auth, async(req,res)=>{
 
-    const task = await Task.create({
+    try{
 
-        title:req.body.title,
-        userId:req.user.id
+        const task = await Task.create({
 
-    })
+            title:req.body.title,
+            userId:req.user.id
 
-    res.json(task)
+        })
+
+        res.json(task)
+
+    }catch(err){
+
+        res.status(500).json({message:"Error creating task"})
+
+    }
 
 })
-
 
 
 /* ===============================
@@ -129,14 +164,21 @@ GET TASKS
 
 app.get("/tasks", auth, async(req,res)=>{
 
-    const tasks = await Task.find({
-        userId:req.user.id
-    })
+    try{
 
-    res.json(tasks)
+        const tasks = await Task.find({
+            userId:req.user.id
+        })
+
+        res.json(tasks)
+
+    }catch(err){
+
+        res.status(500).json({message:"Error fetching tasks"})
+
+    }
 
 })
-
 
 
 /* ===============================
@@ -145,18 +187,28 @@ UPDATE TASK
 
 app.put("/tasks/:id", auth, async(req,res)=>{
 
-    const task = await Task.findByIdAndUpdate(
+    try{
 
-        req.params.id,
-        req.body,
-        {new:true}
+        const task = await Task.findOneAndUpdate(
 
-    )
+            {_id:req.params.id, userId:req.user.id},
+            req.body,
+            {new:true}
 
-    res.json(task)
+        )
+
+        if(!task)
+            return res.status(404).json({message:"Task not found"})
+
+        res.json(task)
+
+    }catch(err){
+
+        res.status(500).json({message:"Error updating task"})
+
+    }
 
 })
-
 
 
 /* ===============================
@@ -165,12 +217,27 @@ DELETE TASK
 
 app.delete("/tasks/:id", auth, async(req,res)=>{
 
-    await Task.findByIdAndDelete(req.params.id)
+    try{
 
-    res.json({message:"Deleted"})
+        const task = await Task.findOneAndDelete({
+
+            _id:req.params.id,
+            userId:req.user.id
+
+        })
+
+        if(!task)
+            return res.status(404).json({message:"Task not found"})
+
+        res.json({message:"Deleted"})
+
+    }catch(err){
+
+        res.status(500).json({message:"Error deleting task"})
+
+    }
 
 })
-
 
 
 /* ===============================
